@@ -1,12 +1,15 @@
 import axios from 'axios';
 
-const BASE_URL = `https://api.openweathermap.org/data/2.5/forecast?`;
-const KEY = 'eb94afecd6ee7e8494ecdaf59826372c';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const KEY = process.env.REACT_APP_KEY;
 
 const fetchWeather = async (zip) => {
-  const resp = await axios(`${BASE_URL}zip=11217,us&appid=${KEY}`)
-
-  return resp.data;
+  try {
+    const resp = await axios(`${BASE_URL}zip=${zip},us&units=imperial&appid=${KEY}`)
+    return resp.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default fetchWeather
