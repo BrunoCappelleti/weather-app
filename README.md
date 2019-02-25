@@ -34,6 +34,7 @@ Will Upload Soon
 Will upload soon
 
 The following table is not exaustive of every component used in the App, but provides a basic outline:
+
 | Component | Description | 
 | --- | :---: |  
 | Welcome Page | This will render the opening page with an area to search for a locations weather | 
