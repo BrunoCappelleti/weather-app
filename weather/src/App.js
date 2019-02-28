@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
-import fetchWeather from './services/fetchWeather'
-import Welcome from './components/Welcome'
+import { Route } from 'react-router-dom';
+import fetchWeather from './services/fetchWeather';
+import Welcome from './components/Welcome';
+import Main from './components/Main';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       formCity: '',
-      cityList: [],
-    }
+      cityList: {},
+      focusedCity: null
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async handleSubmit(ev){
+  async handleSubmit(ev) {
     ev.preventDefault();
-    const city = await fetchWeather(this.state.formCity);
-    console.log(city);
+    const city = await fetchWeather();
+    this.setState({
+      focusedCity: city,
+    })
   }
 
-  handleChange(ev){
+  handleChange(ev) {
     ev.preventDefault();
     const { name, value } = ev.target;
     this.setState({
@@ -28,18 +33,26 @@ class App extends Component {
     })
   }
 
-  async componentDidMount(){
-    const weather = await fetchWeather('11217');
-    console.log(weather);
+  async componentDidMount() {
+    const weather = await fetchWeather();
+    this.setState({
+      focusedCity: weather,
+    })
   }
 
   render() {
     return (
       <div className="App">
-        <Welcome
-        formCity={this.state.formCity}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit} />
+        <Route exact path="/" component={ () => (
+          <Welcome
+          formCity={this.state.formCity}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit} />
+        )} />
+        <Route path="/main" component={() => (
+          <Main
+          focusedCity={this.state.focusedCity} />
+        )} />
       </div>
     );
   }

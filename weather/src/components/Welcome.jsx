@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Welcome = (props) => (
   <div className="welcome-page">
@@ -10,8 +11,10 @@ const Welcome = (props) => (
         name="formCity"
         value={props.formCity}
         onChange={props.handleChange} />
-      <input
-        type="submit" />
+      <button
+      type="submit">
+        <Link to="/main">Get Weather</Link>
+      </button>
     </form>
   </div>
 );
