@@ -1,5 +1,6 @@
 # Project Overview
 
+Project is deployed at: https://eager-bassi-54b0a2.netlify.com/
 
 ## Project Description
 
@@ -31,7 +32,6 @@ Will Upload Soon
 
 ## Components
 
-Will upload soon
 
 The following table is not exaustive of every component used in the App, but provides a basic outline:
 
@@ -55,30 +55,49 @@ The following table is not exaustive of every component used in the App, but pro
 | Post MVP | L | 12hrs| / | / |
 | Total | H | 40hrs| / | / |
 
-## Helper Functions
-Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
-
-| Function | Description | 
-| --- | :---: |  
-| Capitalize | This will capitalize the first letter in a string of text | 
 
 ## Additional Libraries
- React
- React Router
-
+ - React
+ - React Router
+ - axios
+ - moment
+ - Chartkick
+ 
 ## Code Snippet
 
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description  
+Just a quick example of how I chained array methods to extra data, component class methods to update state, and render conditionally based on state.  
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+  {days.slice(1, this.state.showDays).map((el, idx) => (
+          <div className="day" key={idx}>
+            <div className="day-base-data">
+              <div className="day-name">{getDay(el.sunriseTime)}</div>
+              <div className="day-icon">{el.icon}</div>
+              <div className="day-high-low">
+                <div className="day-high">&uarr;{Math.round(el.temperatureHigh)}&deg;</div>
+                <div className="day-low">&darr;{Math.round(el.temperatureLow)}&deg;</div>
+                <div
+                  className="day-show-more"
+                  onClick={(ev)=> {
+                    ev.preventDefault();
+                    this.expandDay(idx)}
+                  }>{idx === this.state.showMore ? '-' : '+'}</div>
+                </div>
+            </div>
+            <div className="day-extended-data">
+              {this.state.showMore === idx &&
+                <div className="extended-data">
+                  <div className="day-summary">{el.summary}</div>
+                  <div className="day-prop">There is a {el.precipProbability * 100}% chance of {el.precipType}</div>
+                  <div className="day-sunrise-sunset">Sunrise: {getTime(el.sunriseTime)}<br/>Sunset: {getTime(el.sunsetTime)}</div>
+                </div>
+              }
+            </div>
+          </div>
+        ))}
+
 ```
 
 ## Issues and Resolutions
- Use this section to list of all major issues encountered and their resolution.
+ The original API I was going to used turned out to have fundamental issues in the middle of the project. Learning when to just cut loses and find a new one was a growth opportunity. In the end I was able find another weather api and use a few additional libraries to clean up the data. As a final note, this was my first project that had some intensive CSS elements, so learning to use that through trial and error was an excellent experience.
 
-#### SAMPLE.....
-**ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
-**RESOLUTION**: Missing comma after first object in sources {} object
