@@ -1,51 +1,212 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto');
+
 .App {
   text-align: center;
-  width: 40%;
-  margin: 50px auto;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
+
+#main {
+  min-height: 100%;
+  position: relative;
+}
+
+/* --------------------------------- */
+/* Welcome Screen */
+/* --------------------------------- */
+
+.welcome-page {
+  width: 100vw;
+  height: 100vh;
+  background: #111111;
+  color: white;
+  font-size: 80px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.welcome-banner {
+  margin: 0;
+  padding-top: 150px;
+}
+
+.welcome-button-link {
+  text-decoration: none;
+}
+
+#city-search {
+  width: 500px;
+  line-height: 200%;
+  font-size: 20px;
+  border: 2px solid white;
+  box-shadow: 0px 4px 10px #aaaaaa;
+}
+
+/* --------------------------------- */
+/* header section */
+/* --------------------------------- */
 
 #header{
-  background: #333333;
+  background: rgba(51, 51, 51, 1);
   color: white;
   font-size: 24px;
-}
-
-#weather{
-  margin: 0 auto;
-}
-
-.current-show-more:hover {
-  cursor: pointer;
-}
-
-.forecast-high-low{
+  height: 75px;
   display: flex;
-}
-
-.day{
-  border-top: solid 2px black;
-}
-
-.day-base-data{
-  display: flex;
-  margin: 0 auto;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
 
-.day h3{
+/* --------------------------------- */
+/* current weather section */
+/* --------------------------------- */
+
+#weather{
+  margin: 50px auto;
+  width: 60%;
+  padding-bottom: 85px;
+}
+
+#current{
+  text-align: left;
+  margin: 25px 0 25px 0;
+}
+
+.current-name {
+  font-size: 40px;
+  margin: 5px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.current-icon {
+  margin: 5px;
+}
+
+.current-temp {
+  font-size: 80px;
+  margin: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.current-realfeel {
+  font-size: 18px;
+  margin: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+}
+
+.current-footer{
+  font-size: 18px;
+  margin: 5px;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  padding: 0 0 30px 0;
+}
+
+.current-summary-today, .current-summary-week{
+  margin: 5px 0;
+}
+
+.current-show-more {
+  text-align: center;
+  font-style: italic;
+  width: 100px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+}
+
+.current-show-more:hover {
+  cursor: pointer;
   background: #333333;
   color: white;
 }
 
-.day p{
-  max-width: 80px;
-  margin: 0 auto;
+/* --------------------------------- */
+/* daily forecast section */
+/* --------------------------------- */
+
+.forecast-header {
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
+  text-align: left;
+  margin: 5px;
 }
+
+.day-base-data{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day{
+  border-top: solid 1px black;
+  padding: 5px;
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.day-name, .day-icon, .day-high-low {
+  width: 33%;
+}
+
+.day-name {
+  text-align: left;
+}
+
+.day-icon {
+  text-align: center;
+}
+
+.day-high-low {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.day-high, .day-low {
+  margin: 0 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.day-show-more {
+  width: 20px;
+  text-align: center;
+}
+
+.forecast-toggle {
+  border-top: solid 1px black;
+  font-size: 18px;
+  font-style: italic;
+  font-family: 'Raleway', sans-serif;
+  text-align: right;
+  padding: 5px;
+}
+
+.extended-data {
+  text-align: left;
+  margin: 20px;
+}
+
+.day-show-more:hover, .forecast-toggle:hover {
+  cursor: pointer;
+  background: #333333;
+  color: white;
+}
+
+/* --------------------------------- */
+/* footer section */
+/* --------------------------------- */
 
 #footer{
-  background: #333333;
+  background: rgba(51, 51, 51, 1);
+  width: 100%;
+  height: 75px;
   color: white;
   font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 0px;
 }

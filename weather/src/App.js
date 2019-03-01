@@ -35,6 +35,7 @@ class App extends Component {
 
   async componentDidMount() {
     const weather = await fetchWeather();
+    console.log(weather);
     this.setState({
       focusedCity: weather,
     })
@@ -43,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={ () => (
+        <Route exact path="/" render={ () => (
           <Welcome
           formCity={this.state.formCity}
           handleChange={this.handleChange}
